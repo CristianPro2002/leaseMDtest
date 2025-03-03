@@ -13,8 +13,13 @@ const ProductsModel = {
     return await queryDatabase(query, values);
   },
 
-  getAccounts: async () => {
-    const query = `SELECT * FROM accounts WHERE created = false LIMIT 80`;
+  getAccountsFisica: async () => {
+    const query = `SELECT * FROM accounts WHERE created = false AND type = 'fisica' LIMIT 80`;
+    return await queryDatabase(query);
+  },
+
+  getAccountsMoral: async () => {
+    const query = `SELECT * FROM accounts WHERE created = false AND type = 'moral' LIMIT 80`;
     return await queryDatabase(query);
   },
 };

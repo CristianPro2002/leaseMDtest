@@ -7,9 +7,23 @@ const ProductsModel = require("../model/Products");
  * @route GET /api/v1/accounts/
  * @access public
  */
-const getAccounts = async (req, res, next) => {
+const getAccountsFisica = async (req, res, next) => {
   try {
-    const responseData = await ProductsModel.getAccounts();
+    const responseData = await ProductsModel.getAccountsFisica();
+    response(res, 200, responseData);
+  } catch (error) {
+    return resError(res, 500, error.message);
+  }
+};
+
+/**
+ * @description
+ * @route GET /api/v1/accounts/
+ * @access public
+ */
+const getAccountsMoral = async (req, res, next) => {
+  try {
+    const responseData = await ProductsModel.getAccountsMoral();
     response(res, 200, responseData);
   } catch (error) {
     return resError(res, 500, error.message);
@@ -28,6 +42,7 @@ const updateAccount = async (req, res, next) => {
 };
 
 module.exports = {
-  getAccounts,
+  getAccountsFisica,
+  getAccountsMoral,
   updateAccount
 };

@@ -1,9 +1,11 @@
 const express = require("express");
-const { getAccounts, updateAccount} = require("../../controllers/traduction.controller");
+const { getAccountsFisica, getAccountsMoral, updateAccount} = require("../../controllers/traduction.controller");
 const { upload } = require("../../middleware/uploadFile");
 const router = express.Router();
 
-router.get("/", getAccounts);
+router.get("/fisica", getAccountsFisica);
+
+router.get("/moral", getAccountsMoral);
 
 router.put("/:id", updateAccount);
 
