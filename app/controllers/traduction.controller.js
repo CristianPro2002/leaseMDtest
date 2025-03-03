@@ -33,8 +33,7 @@ const getAccountsMoral = async (req, res, next) => {
 const updateAccount = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { created } = req.body;
-    const responseData = await ProductsModel.updateAccount(id, { created });
+    const responseData = await ProductsModel.updateAccount(id, req.body);
     response(res, 200, responseData);
   } catch (error) {
     return resError(res, 500, error.message);

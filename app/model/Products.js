@@ -2,13 +2,31 @@ const { queryDatabase } = require("../../config/db");
 
 const ProductsModel = {
   updateAccount: async (id, fields) => {
+    const setClauses = [];
+    const values = [];
+  
+    // Iteramos sobre las claves de 'fields' y las añadimos al SET
+    let i = 1;
+    for (const [key, value] of Object.entries(fields)) {
+      setClauses.push(`${key} = $${i}`);
+      values.push(value);
+      i++;
+    }
+  
+    // Añadir el ID al final de los valores
+    values.push(id);
+  
+    // Unir las cláusulas SET para formar la parte de la consulta
+    const setQuery = setClauses.join(", ");
+  
+    // Construir la consulta final
     const query = `
-        UPDATE accounts
-        SET created = $1
-        WHERE contact_id = $2
-        RETURNING *;
+      UPDATE accounts
+      SET ${setQuery}
+      WHERE contact_id = $${i}
+      RETURNING *;
     `;
-    const values = [fields.created, id];
+  
 
     return await queryDatabase(query, values);
   },
