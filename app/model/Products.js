@@ -32,12 +32,12 @@ const ProductsModel = {
   },
 
   getAccountsFisica: async () => {
-    const query = `SELECT * FROM accounts WHERE created = false AND type = 'fisica' LIMIT 50`;
+    const query = `SELECT * FROM accounts WHERE created = false AND type = 'fisica' LIMIT 20`;
     return await queryDatabase(query);
   },
 
   getAccountsMoral: async () => {
-    const query = `SELECT * FROM accounts WHERE created = false AND type = 'moral' LIMIT 50`;
+    const query = `SELECT * FROM accounts WHERE created = false AND type = 'moral' LIMIT 20`;
     return await queryDatabase(query);
   },
 
@@ -72,12 +72,12 @@ const ProductsModel = {
   },
 
   getAccountsFisicaQa: async () => {
-    const query = `SELECT * FROM accounts_qa WHERE created = false AND type = 'fisica' LIMIT 50`;
+    const query = `SELECT * FROM accounts_qa WHERE created = false AND type = 'fisica' LIMIT 20`;
     return await queryDatabase(query);
   },
 
   getAccountsMoralQa: async () => {
-    const query = `SELECT * FROM accounts_qa WHERE created = false AND type = 'moral' LIMIT 50`;
+    const query = `SELECT * FROM accounts_qa WHERE created = false AND type = 'moral' LIMIT 20`;
     return await queryDatabase(query);
   },
 
